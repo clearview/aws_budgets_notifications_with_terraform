@@ -22,7 +22,7 @@ resource "aws_budgets_budget" "my_production_monthly_budget" {
 
   notification {
     comparison_operator        = "GREATER_THAN"
-    threshold                  = 110
+    threshold                  = 100
     threshold_type             = "PERCENTAGE"
     notification_type          = "FORECASTED"
     subscriber_email_addresses = ["email@my.team"]
