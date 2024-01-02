@@ -1,14 +1,14 @@
-resource "aws_budgets_budget" "my_production_monthly_budget" {
-  name         = "Production Monthly Budget"
+resource "aws_budgets_budget" "ec2_monthly_budget" {
+  name         = "EC2 Monthly Budget"
   budget_type  = "COST"
   limit_amount = "400"
   limit_unit   = "USD"
   time_unit    = "MONTHLY"
 
   cost_filter {
-    name = "TagKeyValue"
+    name = "Service"
     values = [
-      "environment$Production",
+      "Amazon Elastic Compute Cloud - Compute",
     ]
   }
 
