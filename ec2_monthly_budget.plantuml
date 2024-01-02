@@ -1,0 +1,57 @@
+@startuml ec2_monthly_budget
+
+left to right direction
+
+!$AWS_DARK = false
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v17.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/Groups/all.puml
+!include AWSPuml/CloudFinancialManagement/Budgets.puml
+
+!include AWSPuml/Compute/EC2.puml
+!include AWSPuml/General/Email.puml
+!include AWSPuml/General/all.puml
+
+
+!$AWS_DARK = false
+
+' Groups are rectangles with a custom style using stereotype - need to hide
+hide stereotype
+skinparam linetype ortho
+skinparam rectangle {
+    BackgroundColor AWS_BG_COLOR
+    BorderColor transparent
+    Shadowing false
+}
+
+AWSCloudGroup(aws_cloud, "AWS Cloud") {
+    AWSAccountGroup(aws_account_production, "Production AWS Account") {
+        Budgets(ec2_monthly_budget, "EC2 Account Budget", "Monthly Budget for my Account"){
+        }
+        GenericGroup(ec2_group, "EC2 Service Group") {
+        EC2(ec2_service_1, "EC2 service 1", "")
+        EC2(ec2_service_2, "EC2 service 2", "")
+        EC2(ec2_service_3, "EC2 service 3", "")
+        EC2(ec2_service_4, "EC2 service 4", "")
+        }
+        GenericGroup(actual_cost_notification_group, "Actual cost subscriber email addresses") {
+            Email(actual_cost_email, "Actual cost email", "actual@my.team")
+        }
+        GenericGroup(forecasted_cost_notification_group, "Forecasted cost subscriber email addresses") {
+            Email(forecasted_cost_email, "Forecasted cost email", "forecasted@my.team")
+
+        }
+    }
+}
+
+'Hidden connections'
+aws_account_production -[hidden]up- ec2_monthly_budget
+aws_account_production -[hidden]down- ec2_group
+'Service cost filter'
+ec2_group <-[$AWS_COLOR_ENDOR]---------- ec2_monthly_budget : cost filter by service
+'Budget notifications'
+ec2_monthly_budget -[dashed,$AWS_COLOR_ENDOR]----> actual_cost_notification_group : email if threshold is GREATER_THAN 90% of ACTUAL usage
+ec2_monthly_budget -[dashed,$AWS_COLOR_ENDOR]----> forecasted_cost_notification_group : email if threshold is GREATER_THAN 100% of FORECASTED usage
+
+@enduml
