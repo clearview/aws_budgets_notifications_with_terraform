@@ -1,4 +1,4 @@
-# AWS Budgets Notifications with Terraform
+# AWS Budgets and Notifications with Terraform
 
 ## Monthly Account Budget
 ![Alt text](out/account_monthly_budget/account_monthly_budget.png?raw=true "AWS")
