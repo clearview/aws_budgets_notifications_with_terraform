@@ -53,5 +53,11 @@ S3_group <-[$AWS_COLOR_ENDOR]---------- S3_monthly_budget : cost filter by servi
 'Budget notifications'
 S3_monthly_budget -[dashed,$AWS_COLOR_ENDOR]----> actual_cost_notification_group : email if threshold is GREATER_THAN 90% of ACTUAL usage
 S3_monthly_budget -[dashed,$AWS_COLOR_ENDOR]----> forecasted_cost_notification_group : email if threshold is GREATER_THAN 100% of FORECASTED usage
+'Legend'
+legend
+    AWS S3 Monthly Budget 
+    by 
+    **clearview.team**
+end legend
 
 @enduml

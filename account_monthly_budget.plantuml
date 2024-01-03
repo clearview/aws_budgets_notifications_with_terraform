@@ -40,11 +40,16 @@ AWSCloudGroup(aws_cloud, "AWS Cloud") {
         }
     }
 }
-
 'Hidden connections'
 aws_account_production -[hidden]up- account_monthly_budget
 'Budget notifications'
 account_monthly_budget -[dashed,$AWS_COLOR_ENDOR]----> actual_cost_notification_group : email if threshold is GREATER_THAN 90% of ACTUAL usage
 account_monthly_budget -[dashed,$AWS_COLOR_ENDOR]----> forecasted_cost_notification_group : email if threshold is GREATER_THAN 100% of FORECASTED usage
+'Legend'
+legend
+    AWS Monthly Account Budget 
+    by 
+    **clearview.team**
+end legend
 
 @enduml

@@ -54,5 +54,11 @@ ec2_group <-[$AWS_COLOR_ENDOR]---------- ec2_monthly_budget : cost filter by ser
 'Budget notifications'
 ec2_monthly_budget -[dashed,$AWS_COLOR_ENDOR]----> actual_cost_notification_group : email if threshold is GREATER_THAN 90% of ACTUAL usage
 ec2_monthly_budget -[dashed,$AWS_COLOR_ENDOR]----> forecasted_cost_notification_group : email if threshold is GREATER_THAN 100% of FORECASTED usage
+'Legend'
+legend
+    AWS EC2 Monthly Budget 
+    by 
+    **clearview.team**
+end legend
 
 @enduml

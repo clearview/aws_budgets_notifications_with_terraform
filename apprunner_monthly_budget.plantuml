@@ -54,5 +54,11 @@ AppRunner_group <-[$AWS_COLOR_ENDOR]---------- AppRunner_monthly_budget : cost f
 'Budget notifications'
 AppRunner_monthly_budget -[dashed,$AWS_COLOR_ENDOR]----> actual_cost_notification_group : email if threshold is GREATER_THAN 90% of ACTUAL usage
 AppRunner_monthly_budget -[dashed,$AWS_COLOR_ENDOR]----> forecasted_cost_notification_group : email if threshold is GREATER_THAN 100% of FORECASTED usage
+'Legend'
+legend
+    AWS AppRunner Monthly Budget 
+    by 
+    **clearview.team**
+end legend
 
 @enduml
