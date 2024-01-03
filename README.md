@@ -27,3 +27,7 @@ https://github.com/clearview/aws_budgets_notifications_with_terraform/blob/78ee4
 https://github.com/clearview/aws_budgets_notifications_with_terraform/blob/51c44a1c1d8524044761da55076a00836677b273/apprunner_monthly_account_budget.tf#L1-L30
 
 ## Budgets based on tag filtering
+
+### Production Tag Monthly Budget
+
+![Alt text](out/production_tag_monthly_budget/production_tag_monthly_budget.png?raw=true "Production Tag Monthly Budget")

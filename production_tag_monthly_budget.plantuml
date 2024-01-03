@@ -1,0 +1,64 @@
+@startuml production_tag_monthly_budget
+
+left to right direction
+
+!$AWS_DARK = false
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v17.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/Groups/all.puml
+!include AWSPuml/CloudFinancialManagement/Budgets.puml
+!include AWSPuml/Compute/EC2.puml
+!include AWSPuml/Compute/AppRunner.puml
+
+!include AWSPuml/General/Email.puml
+!include AWSPuml/General/all.puml
+!include AWSPuml/Storage/SimpleStorageService.puml
+
+!$AWS_DARK = false
+
+' Groups are rectangles with a custom style using stereotype - need to hide
+hide stereotype
+skinparam linetype ortho
+skinparam rectangle {
+    BackgroundColor AWS_BG_COLOR
+    BorderColor transparent
+    Shadowing false
+}
+
+AWSCloudGroup(aws_cloud, "AWS Cloud") {
+    AWSAccountGroup(aws_account_production, "Production AWS Account") {
+        Budgets(production_tag_monthly_budget, "Production Tag Monthly Budget", "Monthly Budget for all resources with the Production tag"){
+        }
+        GenericGroup(production_tag_group, "Production Tag Group") {
+            EC2(ec2_service, "EC2 service", "")
+            SimpleStorageService(S3_bucket, "S3 bucket", "")
+            AppRunner(AppRunner_service, "AppRunner service", "")
+        }
+        GenericGroup(actual_cost_notification_group, "Actual cost subscriber email addresses") {
+            Email(actual_cost_email_1, "Actual cost email 1", "actual_1@my.team")
+            Email(actual_cost_email_2, "Actual cost email 2", "actual_2@my.team")
+        }
+        GenericGroup(forecasted_cost_notification_group, "Forecasted cost subscriber email addresses") {
+            Email(forecasted_cost_email_1, "Forecasted cost email 1", "forecasted_1@my.team")
+            Email(forecasted_cost_email_2, "Forecasted cost email 2", "forecasted_2@my.team")
+        }
+    }
+}
+
+'Hidden connections'
+aws_account_production -[hidden]up- production_tag_monthly_budget
+aws_account_production -[hidden]down- production_tag_group
+'Service cost filter'
+production_tag_group <-[$AWS_COLOR_ENDOR]---------- production_tag_monthly_budget : cost filter by service
+'Budget notifications'
+production_tag_monthly_budget -[dashed,$AWS_COLOR_ENDOR]----> actual_cost_notification_group : email if threshold is GREATER_THAN 90% of ACTUAL usage
+production_tag_monthly_budget -[dashed,$AWS_COLOR_ENDOR]----> forecasted_cost_notification_group : email if threshold is GREATER_THAN 100% of FORECASTED usage
+'Legend'
+legend
+    AWS Production Tag Monthly Budget
+    by
+    **clearview.team**
+end legend
+
+@enduml
