@@ -31,3 +31,5 @@ https://github.com/clearview/aws_budgets_notifications_with_terraform/blob/51c44
 ### Production Tag Monthly Budget
 
 ![Alt text](out/production_tag_monthly_budget/production_tag_monthly_budget.png?raw=true "Production Tag Monthly Budget")
+
+https://github.com/clearview/aws_budgets_notifications_with_terraform/blob/dfddfaf7ad09fde6d71cddaeaff8c651f6c9c642/production_tag_monthly_budget.tf#L1-L36
