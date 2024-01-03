@@ -30,17 +30,17 @@ AWSCloudGroup(aws_cloud, "AWS Cloud") {
         Budgets(AppRunner_monthly_budget, "AppRunner Account Budget", "Monthly Budget for my Account"){
         }
         GenericGroup(AppRunner_group, "AppRunner Service Group") {
-        AppRunner(AppRunner_service_1, "AppRunner service 1", "")
-        AppRunner(AppRunner_service_2, "AppRunner service 2", "")
-        AppRunner(AppRunner_service_3, "AppRunner service 3", "")
-        AppRunner(AppRunner_service_4, "AppRunner service 4", "")
+            AppRunner(AppRunner_service_1, "AppRunner service 1", "")
+            AppRunner(AppRunner_service_2, "AppRunner service 2", "")
+            AppRunner(AppRunner_service_3, "AppRunner service 3", "")
+            AppRunner(AppRunner_service_4, "AppRunner service 4", "")
         }
         GenericGroup(actual_cost_notification_group, "Actual cost subscriber email addresses") {
             Email(actual_cost_email, "Actual cost email", "actual@my.team")
         }
         GenericGroup(forecasted_cost_notification_group, "Forecasted cost subscriber email addresses") {
-            Email(forecasted_cost_email, "Forecasted cost email", "forecasted@my.team")
-
+            Email(forecasted_cost_email_1, "Forecasted cost email 1", "forecasted_1@my.team")
+            Email(forecasted_cost_email_2, "Forecasted cost email 2", "forecasted_2@my.team")
         }
     }
 }

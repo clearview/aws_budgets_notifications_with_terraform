@@ -30,17 +30,17 @@ AWSCloudGroup(aws_cloud, "AWS Cloud") {
         Budgets(ec2_monthly_budget, "EC2 Account Budget", "Monthly Budget for my Account"){
         }
         GenericGroup(ec2_group, "EC2 Service Group") {
-        EC2(ec2_service_1, "EC2 service 1", "")
-        EC2(ec2_service_2, "EC2 service 2", "")
-        EC2(ec2_service_3, "EC2 service 3", "")
-        EC2(ec2_service_4, "EC2 service 4", "")
+            EC2(ec2_service_1, "EC2 service 1", "")
+            EC2(ec2_service_2, "EC2 service 2", "")
+            EC2(ec2_service_3, "EC2 service 3", "")
+            EC2(ec2_service_4, "EC2 service 4", "")
         }
         GenericGroup(actual_cost_notification_group, "Actual cost subscriber email addresses") {
             Email(actual_cost_email, "Actual cost email", "actual@my.team")
         }
         GenericGroup(forecasted_cost_notification_group, "Forecasted cost subscriber email addresses") {
-            Email(forecasted_cost_email, "Forecasted cost email", "forecasted@my.team")
-
+            Email(forecasted_cost_email_1, "Forecasted cost email 1", "forecasted_1@my.team")
+            Email(forecasted_cost_email_2, "Forecasted cost email 2", "forecasted_2@my.team")
         }
     }
 }

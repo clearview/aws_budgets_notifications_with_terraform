@@ -38,8 +38,8 @@ AWSCloudGroup(aws_cloud, "AWS Cloud") {
             Email(actual_cost_email, "Actual cost email", "actual@my.team")
         }
         GenericGroup(forecasted_cost_notification_group, "Forecasted cost subscriber email addresses") {
-            Email(forecasted_cost_email, "Forecasted cost email", "forecasted@my.team")
-
+            Email(forecasted_cost_email_1, "Forecasted cost email 1", "forecasted_1@my.team")
+            Email(forecasted_cost_email_2, "Forecasted cost email 2", "forecasted_2@my.team")
         }
     }
 }
