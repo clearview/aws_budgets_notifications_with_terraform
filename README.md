@@ -14,4 +14,4 @@ https://github.com/clearview/aws_budgets_notifications_with_terraform/blob/main/
 
 ## S3 Monthly Budget
 
-![Alt text](out/out/s3_monthly_budget/s3_monthly_budget.png?raw=true "S3 Monthly Budget")
+![Alt text](out/s3_monthly_budget/s3_monthly_budget.png?raw=true "S3 Monthly Budget")
