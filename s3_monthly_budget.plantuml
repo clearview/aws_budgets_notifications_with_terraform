@@ -35,7 +35,8 @@ AWSCloudGroup(aws_cloud, "AWS Cloud") {
             SimpleStorageService(S3_bucket_4, "S3 bucket 4", "")
         }
         GenericGroup(actual_cost_notification_group, "Actual cost subscriber email addresses") {
-            Email(actual_cost_email, "Actual cost email", "actual@my.team")
+            Email(actual_cost_email_1, "Actual cost email 1", "actual_1@my.team")
+            Email(actual_cost_email_2, "Actual cost email 2", "actual_2@my.team")
         }
         GenericGroup(forecasted_cost_notification_group, "Forecasted cost subscriber email addresses") {
             Email(forecasted_cost_email_1, "Forecasted cost email 1", "forecasted_1@my.team")
