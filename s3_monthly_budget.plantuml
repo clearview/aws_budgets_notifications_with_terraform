@@ -1,0 +1,56 @@
+@startuml s3_monthly_budget
+
+left to right direction
+
+!$AWS_DARK = false
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v17.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/Groups/all.puml
+!include AWSPuml/CloudFinancialManagement/Budgets.puml
+
+!include AWSPuml/General/Email.puml
+!include AWSPuml/General/all.puml
+!include AWSPuml/Storage/SimpleStorageService.puml
+
+!$AWS_DARK = false
+
+' Groups are rectangles with a custom style using stereotype - need to hide
+hide stereotype
+skinparam linetype ortho
+skinparam rectangle {
+    BackgroundColor AWS_BG_COLOR
+    BorderColor transparent
+    Shadowing false
+}
+
+AWSCloudGroup(aws_cloud, "AWS Cloud") {
+    AWSAccountGroup(aws_account_production, "Production AWS Account") {
+        Budgets(S3_monthly_budget, "S3 Monthly Budget", "Monthly Budget for my Account"){
+        }
+        GenericGroup(S3_group, "S3 bucket Group") {
+            SimpleStorageService(S3_bucket_1, "S3 bucket 1", "")
+            SimpleStorageService(S3_bucket_2, "S3 bucket 2", "")
+            SimpleStorageService(S3_bucket_3, "S3 bucket 3", "")
+            SimpleStorageService(S3_bucket_4, "S3 bucket 4", "")
+        }
+        GenericGroup(actual_cost_notification_group, "Actual cost subscriber email addresses") {
+            Email(actual_cost_email, "Actual cost email", "actual@my.team")
+        }
+        GenericGroup(forecasted_cost_notification_group, "Forecasted cost subscriber email addresses") {
+            Email(forecasted_cost_email, "Forecasted cost email", "forecasted@my.team")
+
+        }
+    }
+}
+
+'Hidden connections'
+aws_account_production -[hidden]up- S3_monthly_budget
+aws_account_production -[hidden]down- S3_group
+'Service cost filter'
+S3_group <-[$AWS_COLOR_ENDOR]---------- S3_monthly_budget : cost filter by service
+'Budget notifications'
+S3_monthly_budget -[dashed,$AWS_COLOR_ENDOR]----> actual_cost_notification_group : email if threshold is GREATER_THAN 90% of ACTUAL usage
+S3_monthly_budget -[dashed,$AWS_COLOR_ENDOR]----> forecasted_cost_notification_group : email if threshold is GREATER_THAN 100% of FORECASTED usage
+
+@enduml
