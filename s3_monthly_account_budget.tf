@@ -1,5 +1,5 @@
 resource "aws_budgets_budget" "s3_monthly_budget" {
-  name         = "S3 Monthly Budget"
+  name         = "My S3 Monthly Budget"
   budget_type  = "COST"
   limit_amount = "100"
   limit_unit   = "USD"

@@ -1,5 +1,5 @@
 resource "aws_budgets_budget" "apprunner_monthly_budget" {
-  name         = "AppRunner Monthly Budget"
+  name         = "My AppRunner Monthly Budget"
   budget_type  = "COST"
   limit_amount = "100"
   limit_unit   = "USD"
