@@ -33,3 +33,7 @@ https://github.com/clearview/aws_budgets_notifications_with_terraform/blob/51c44
 ![Alt text](out/production_tag_monthly_budget/production_tag_monthly_budget.png?raw=true "Production Tag Monthly Budget")
 
 https://github.com/clearview/aws_budgets_notifications_with_terraform/blob/dfddfaf7ad09fde6d71cddaeaff8c651f6c9c642/production_tag_monthly_budget.tf#L1-L36
+
+
+# Links
+* [Medium article: Before setting up your next Cloud project, do not forget to set the budgets and alerts](https://medium.com/clearview-team/before-setting-up-your-next-cloud-project-do-not-forget-to-set-the-budgets-and-alerts-ca117b34a9ca)
